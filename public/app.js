@@ -91,10 +91,6 @@ const start = ()=>{
         correctLetter = [];
         wrongLetter = []
         
-
-        console.log(correctLetter)
-        console.log(wrongLetter)
-        
         displayTheWord()
         
         wrongLettersSelected()
@@ -111,14 +107,11 @@ const start = ()=>{
         if(event.keyCode >= 97 && event.keyCode <= 122){
             const keyPressed = event.key
             if(data.includes(keyPressed)){
-                console.log(!correctLetter.includes(keyPressed))
                 if(!correctLetter.includes(keyPressed)){
                     correctLetter.push(keyPressed)
                     displayTheWord()
                 } else {
                     allreadyPressed()
-
-                    console.log(correctLetter) 
                 }
             } else{
                 if(!wrongLetter.includes(keyPressed)){
@@ -127,8 +120,6 @@ const start = ()=>{
                     wrongLettersSelected()
                 } else{
                     allreadyPressed()
-
-                    console.log(wrongLetter)
                 }
             }
         }

@@ -186,4 +186,8 @@ body {
   #final-message {
     font-size: 1.2em;
   }
+
+  .myWord {
+    text-align: center;
+  }
 }

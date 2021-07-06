@@ -81,6 +81,10 @@ body {
   display: none;
 }
 
+.myWord {
+  text-align: center;
+}
+
 /* Button play again */
 
 #play-button {

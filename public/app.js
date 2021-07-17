@@ -21,10 +21,10 @@ function beforeStart() {
       const newCountry = user.location.country.toLowerCase();
       data = newCountry;
 
-      // Get the country in your log
       console.log(newCountry);
       displayTheWord();
-    });
+    })
+    .catch((err) => console.log(err));
 }
 
 function displayTheWord() {
@@ -37,11 +37,12 @@ function displayTheWord() {
                 ${correctLetter.includes(letter) ? letter : " "}
                         </span>`;
       })
-      .join("")}
-            `;
+      .join("")}`;
 
     // For get all the letter on the same line
     const innerWord = wordEl.innerText.replace(/\n/g, "");
+
+    // Show message if win
     if (innerWord.length === data.length) {
       finalMessage.style.display = "block";
       finalMessage.innerText = "Congrat's You Win !";
@@ -51,11 +52,10 @@ function displayTheWord() {
 }
 
 const start = () => {
-  //Function for show the wrong letters selected in the DOM + figure-part
   function wrongLettersSelected() {
     // put all letters in the DOM after get wrong
     wrongLetterEl.innerHTML = `
-            ${wrongLetter.length > 0 ? "<p>WRONG LETTERS: </p>" : " "}
+            ${wrongLetter.length > 0 ? "<p>WRONG LETTERS:</p>" : " "}
             ${wrongLetter.map((letter) => `<span> ${letter} </span>`)}
         `;
     // Put the figure for all letters wrong
@@ -68,6 +68,7 @@ const start = () => {
         part.style.display = "none";
       }
     });
+
     // Message if you loose
     if (wrongLetter.length === figureParts.length) {
       finalMessage.style.display = "block";
@@ -86,13 +87,13 @@ const start = () => {
       notification.classList.remove("show");
     }, 3000);
   }
+
   // Buttons and functions for reset all the game
   playAgainBtn.addEventListener("click", function () {
     correctLetter = [];
     wrongLetter = [];
 
     displayTheWord();
-
     wrongLettersSelected();
 
     playAgainBtn.style.display = "none";
@@ -115,7 +116,6 @@ const start = () => {
       } else {
         if (!wrongLetter.includes(keyPressed)) {
           wrongLetter.push(keyPressed);
-
           wrongLettersSelected();
         } else {
           allreadyPressed();
